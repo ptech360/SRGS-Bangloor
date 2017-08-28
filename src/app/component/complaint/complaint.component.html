@@ -4,12 +4,15 @@
   <div class="panel-heading">{{status}} Complaints</div>
 
   <!-- Table -->
-  <div class="panel-body">
+  <div class="panel-body" style="min-height:100px">
     <!--<div class="form-group row">
       <div class="col-lg-12">
         <input class="form-control" type="search" placeholder="Search by complaint title .,. " id="example-search-input" (keyup)="searchComplaints($event)">
       </div>
     </div>-->
+    <div class="row text-center">
+      <loader [condition]="loader"></loader>
+    </div>
     <!--cards -->
     <div style="margin-top: 2%;padding-top: 1%;">
       <div class="container card" *ngFor="let c of complaints; let i = index;">
@@ -27,7 +30,7 @@
         <div class="col-sm-6" class="badge">{{c.priorityName}}</div>
       </div> -->
         <div class="row">
-          <img class="image" [attr.src]="fileUrl + c.studentPicUrl">
+          <img class="image" [attr.src]="fileUrl + c.studentPicUrl" style="border-radius:50% !important">
         </div>
         <div class="row name">{{c.studentName}}</div>
         <div class="row class">{{c.studentStandardName}}</div>
@@ -49,7 +52,15 @@
       </div>
     </div>
     <!--end cards-->
-    <div class="modal fade" id="myModal-card" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+    <div class="row col-lg-12" style="text-align: center" *ngIf="(EmptyComplaints)&&(!loader)&&(currentPage==1)"><b>No Complaints are added to the view.</b></div>
+    <div class="row col-lg-12" style="text-align: center" *ngIf="(EmptyComplaints)&&(!loader)&&(currentPage!=1)"><b>No more Complaints are added to the view.</b></div>
+  </div>
+  <div class="panel-footer">
+    <!--<button (click)="previousComplaint()" [disabled]="currentPage === 1" type="button" class="btn btn-primary">Previous</button>-->
+    <div class="text-center"><button (click)="nextComplaint()" type="button" [disabled]="EmptyComplaints || noMore" class="btn btn-primary">Load More</button></div>
+  </div>
+</div>
+<div class="modal fade" id="myModal-card" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
       <div class="modal-dialog" role="document">
         <div class="modal-content" *ngIf="selectedComplaint">
           <div class="modal-header">
@@ -86,7 +97,7 @@
               <label class="heading">Priority</label>-->
                 </div>
               </div>
-              <div class="col-sm-4"><img class="modal-image" [attr.src]="fileUrl + selectedComplaint.studentPicUrl"></div>
+              <div class="col-sm-4"><img class="modal-image" [attr.src]="fileUrl + selectedComplaint.studentPicUrl" style="border-radius:50% !important"></div>
             </div>
             <div class="row modal-name">{{selectedComplaint.studentName}}
               <div class="modal-class">{{selectedComplaint.studentStandardName}}</div>
@@ -144,18 +155,6 @@
       <!-- /.modal-dialog -->
     </div>
     <!-- /.modal -->
-
-    <div class="row text-center">
-      <loader [condition]="loader"></loader>
-    </div>
-    <div class="row col-lg-12" style="text-align: center" *ngIf="(EmptyComplaints)&&(!loader)&&(currentPage==1)"><b>No Complaints are added to the view.</b></div>
-    <div class="row col-lg-12" style="text-align: center" *ngIf="(EmptyComplaints)&&(!loader)&&(currentPage!=1)"><b>No more Complaints are added to the view.</b></div>
-  </div>
-  <div class="panel-footer">
-    <!--<button (click)="previousComplaint()" [disabled]="currentPage === 1" type="button" class="btn btn-primary">Previous</button>-->
-    <button (click)="nextComplaint()" type="button" [disabled]="EmptyComplaints || noMore" class="btn btn-primary">Load More</button>
-  </div>
-</div>
 
 <!-- Edit Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -252,9 +251,9 @@
     <div class="clearFix"></div>
   </div>
   <div class="panel-body">
-    <div *ngIf="EmptyComments" style="text-align:center;">No Comments to display</div>
+    <div *ngIf="EmptyComments && !loaderComment" style="text-align:center;">No Comments to display</div>
     <div class="row text-center">
-      <loader [condition]="loaderComment"></loader>
+      <loader [condition]="loaderComment" class="centerLoader"></loader>
     </div>
     <div *ngFor="let c of comments" class="commments">
       <div *ngIf="c.employeeId == currentUser">

@@ -36,14 +36,14 @@ export class MainComponent implements OnInit, AfterViewInit {
   public pages = [
     { title: 'Dashboard', component: DashboardComponent, icon: 'icons/dashboard.png', url: '/dashboard' },
     { title: 'Complaints', component: ComplaintComponent, icon: 'icons/complaint.png', url: '/complaint' },
-    // { title: 'Suggestion', component: SuggestionComponent, icon: 'icons/suggestion.png', url: '/suggestion/for-me'} ,
+    { title: 'Suggestion', component: SuggestionComponent, icon: 'icons/suggestion.png', url: '/suggestion/for-me'} ,
     { title: 'Appreciation', component: AppreciationComponent, icon: 'icons/appreciation.png', url: '/appreciation' },
     { title: 'Messaging', component: MessageComponent, icon: 'icons/message.png', url: '/conversation'},
     { title: 'Events', component: EventComponent, icon: 'icons/event.png', url: '/event'},
     { title: 'Poll', component: PollComponent, icon: 'icons/poll.png', url: '/poll' },
-    // { title: 'Survey', component: SurveyComponent, icon: 'icons/survey.png', url: '/survey' },
+    { title: 'Survey', component: SurveyComponent, icon: 'icons/survey.png', url: '/survey' },
     { title: 'Circular', component: CircularComponent, icon: 'icons/circular.png', url: '/circular' },
-    { title: 'Homework', component: HomeworkComponent, icon: 'icons/homework.png', url: '/homework/current-homework' },
+    { title: 'Homework', component: HomeworkComponent, icon: 'icons/homework.png', url: '/homework' },
     { title: 'Student Rating', component: StudentRatingComponent, icon: 'icons/rating.png', url: '/student-profile' },
 
     //  { title: 'Add Employee', component: AddEmployeeComponent, icon: '', url:'/add-employee'},
@@ -61,7 +61,7 @@ export class MainComponent implements OnInit, AfterViewInit {
     this.selectedIndex = i;
   }
   ngOnInit() {
-    //  $.noConflict(); 
+     jQuery.noConflict(); 
     if (this.log.isLoggedIn()) this.isLoggedIn = true;
     else this.isLoggedIn = false;
     // this.checkStudentRating();
@@ -101,12 +101,24 @@ this.role=this.log.getData('role');
   $("#menu-toggle").click(function (e: any) {
      $("#wrapper").toggleClass("toggled");
      shiftLeft();
-  }); 
+  });
+    
+//   $("body").mouseup(function(e:any) 
+// {
+//     var container = $("#profile-card");
+
+//     // if the target of the click isn't the container nor a descendant of the container
+//     if (!container.is(e.target) && container.has(e.target).length === 0) 
+//     {
+//         container.hide();
+//     }
+// });
 
   }
    logout() {
     localStorage.clear();
   }
+
 
 
 }

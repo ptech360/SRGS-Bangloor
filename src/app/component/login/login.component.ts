@@ -2,18 +2,23 @@ import {Component} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../providers/auth.service';
 import { Router } from '@angular/router';
+declare let $: any;
+
 @Component({
   selector:'login',
   templateUrl:'./login.component.html',
   styleUrls:['./login.component.css']
 })
+
 export class LoginComponent{
   loginForm: FormGroup;
   error:boolean = false;
+  public loader:boolean=false;
   constructor(public formBuilder: FormBuilder,
               public appService: AuthService,
               public router: Router){
-              if(appService.isLoggedIn()){                
+              if(appService.isLoggedIn()){ 
+                $.noConflict();               
                 router.navigate(['/']);
               }
   }
@@ -24,9 +29,12 @@ export class LoginComponent{
     });
   }
   onSubmit(){
+    this.loader=true;
     this.appService.verifyUser(this.loginForm.value).subscribe((res) => {
+      this.loader=false;
       this.verifySuccessfully(res);
     }, (err) => {
+      this.loader=false;      
       this.verifyFailed(err);
     });
   }
@@ -49,7 +57,7 @@ export class LoginComponent{
     });
   }
 
-  public loggedInSuccesfully(res:any) {    
+  public loggedInSuccesfully(res:any) {
     this.appService.storeData(res);
     this.router.navigate(['/']);
   }    

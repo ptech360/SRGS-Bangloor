@@ -30,7 +30,6 @@ import { SurveyService } from "../../providers/survey.service";
 import { MessageService } from "../../providers/message.service";
 import { ErrorComponent } from "../error/error.component";
 import { Error404Component } from "../error/error404";
-
 const rootRouterConfig:Routes = [
 {path : '' , redirectTo:'dashboard' , pathMatch:'full'},
   { path: '', component: MainComponent,
@@ -41,7 +40,6 @@ const rootRouterConfig:Routes = [
     { path: 'add-circular', loadChildren: 'app/component/circular/add/add.module#AddModule', canActivate: [LoggedInGuard] },
     
     { path: 'homework', loadChildren: 'app/component/homework/homework.module#HomeworkModule', canActivate: [LoggedInGuard],},
-    { path: 'homework-add', loadChildren: 'app/component/homework/add/add.module#HomeworkAddModule', canActivate: [LoggedInGuard] },
     { path: 'account', loadChildren : 'app/component/account/account.module#AccountModule', canActivate: [LoggedInGuard] },
     { path: 'add-employee', loadChildren : 'app/component/addEmployee/addEmployee.module#AddEmployeeModule', canActivate: [LoggedInGuard] },
     { path: 'add-student', loadChildren: 'app/component/addStudent/addStudent.module#AddStudentModule', canActivate: [LoggedInGuard] },

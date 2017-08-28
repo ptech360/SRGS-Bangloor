@@ -40,6 +40,7 @@ export class ComplaintComponent implements OnInit, AfterViewInit {
   constructor(public cs: ComplaintService,
     public router: Router,
     public route: ActivatedRoute, ) {
+       
     this.url = this.router.url;
 
     this.route.params.subscribe(param => {
@@ -77,7 +78,6 @@ export class ComplaintComponent implements OnInit, AfterViewInit {
 
       this.employees = response.employees;
       this.priorities = response.priorities;
-      // console.log('emp',this.employees);
     },
       error => {
         this.employees = [];
@@ -167,7 +167,6 @@ export class ComplaintComponent implements OnInit, AfterViewInit {
 
   public seletToExpand(c: any, i: any) {
     this.selectedComplaint = c;
-    // console.log("sel",this.selectedComplaint)
     this.selectedIndex = i;
   }
 
@@ -253,11 +252,9 @@ export class ComplaintComponent implements OnInit, AfterViewInit {
   //         return;
   //       }
   //       this.loader = false;
-  //        console.log('res')
   //     },
   //       (error: any) => {
   //         this.loader = false;
-  //         console.log("err",error);
   //       })
   //   }
   //   else {
@@ -285,7 +282,6 @@ export class ComplaintComponent implements OnInit, AfterViewInit {
         this.loaderComment = false;
         return;
       }
-      // console.log('res',res);
       this.EmptyComments = false;
       this.comments = res;
       this.count = this.comments.length;
@@ -335,7 +331,6 @@ export class ComplaintComponent implements OnInit, AfterViewInit {
         this.commentForm.value['employeeId'] = this.currentUser;
         this.commentForm.value['createdAt'] = new Date();
         this.commentForm.value['employeePicUrl'] = localStorage.getItem('picTimestamp')
-        // console.log(this.commentForm.value);
         this.comments.push(this.commentForm.value);
 
         this.commentForm.reset();
