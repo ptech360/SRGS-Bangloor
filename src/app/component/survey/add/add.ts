@@ -166,7 +166,7 @@ export class AddSurveyComponent implements OnInit {
   public submitSurvey() {
     this.submitProgress = true;
     this.ss.saveSurvey(this.surveyForm.value).subscribe(res => {
-      this.lsubmitProgress = false;
+      this.submitProgress = false;
       $('#submitModal').modal('show');
       this.initForm();
     },
