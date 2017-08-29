@@ -35,7 +35,7 @@ export class CommonService {
 
   getStandards() {
     this.getUrl();
-    return this.http.get(this.surveyUrl + "/homework/standard")
+    return this.http.get(this.baseUrl +this.con.role + "/" + this.con.userId + "/homework/standard")
                     .map(this.extractData)
                     .catch(this.handleError);
   }

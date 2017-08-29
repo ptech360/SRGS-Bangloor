@@ -6,7 +6,7 @@ import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 
  @Component({
-  selector:'suggestion-add',
+  selector:'add-suggestion',
   templateUrl:'./add.html',
   // styleUrls:''
  })
