@@ -21,8 +21,8 @@
             <div class="flot-chart" style="padding:auto 0;">
               <div class="row">
                 <div class="col-lg-6">
-                  <ul class="" style="list-style-type:none;margin:0;padding:0;" *ngFor="let o of p.options">
-                    <li class="pollChoice">{{o.name}}
+                  <ul class="" style="list-style-type:none;margin:0;padding:0;" >
+                    <li class="pollChoice" *ngFor="let o of p.options">{{o.name}}
                       <div class="progress pollProgress">
                         <span class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" [attr.aria-valuenow]="o.percent"
                           aria-valuemin="0" aria-valuemax="100" [style.width]="(o.percent/100)*100 + '%'">
