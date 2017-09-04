@@ -166,7 +166,6 @@ export class EventComponent implements OnInit, AfterViewInit {
     public editForm(){
       this.selectedEvent.startTime=(moment_(this.selectedEvent.startTime,'hh-mm a').format('HH:mm'));
       this.selectedEvent.endTime=(moment_(this.selectedEvent.endTime,'hh-mm a').format('HH:mm'));
-      console.log(this.selectedEvent.startTime);
       return new FormGroup({
       title:new FormControl(this.selectedEvent.title),        
       startDate:new FormControl(this.selectedEvent.startDate),
@@ -257,7 +256,6 @@ public endT(e:any){
   public getEventById(id:any){
     this.eventService.GetEventById(id).subscribe((res)=>{
       this.eventsInfo=res;
-      console.log(this.eventsInfo);
       $('#fullCalModal').modal('show');         
     // this.startTime = moment_(this.eventsInfo.start).format('HH-MM-SS-A');
     //  this.endTime = moment_(this.eventsInfo.end).format('HH-MM-SS-A');
@@ -408,7 +406,6 @@ public onStartDate(e:any){
   public checkStart(e:any){
     
     this.startTime=e;
-    console.log(e);
   if((this.editEvent.controls['startDate'].value)==(this.editEvent.controls['endDate'].value)){
   if(this.endTime<this.startTime){
       this.message="Please choose start time less than end time";

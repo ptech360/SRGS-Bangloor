@@ -26,6 +26,7 @@ import { CurrentPollComponent } from "../poll/current/poll";
 import { AddPollComponent } from "../poll/add/add";
 import { MessageComponent } from "../message/message.component";
 import { EventComponent } from "../event/event.component";
+import { FoodmenuComponent } from "../foodmenu/foodmenu.component";
 import { SurveyComponent } from "../survey/survey.component";
 import { CurrentSurveyComponent } from "../survey/current/survey";
 import { ClosedSurveyComponent } from "../survey/closed/survey";
@@ -85,6 +86,7 @@ import { SuggestionAddComponent } from "../suggestion/add/add";
       { path: 'add-poll', component: AddPollComponent, canActivate: [LoggedInGuard] },
       { path: 'conversation', component: MessageComponent, canActivate: [LoggedInGuard], },
       { path: 'event', component: EventComponent, canActivate: [LoggedInGuard] },
+      { path: 'foodmenu', component: FoodmenuComponent, canActivate: [LoggedInGuard] },      
       {
         path: 'survey', component: SurveyComponent, canActivate: [LoggedInGuard],
         children: [

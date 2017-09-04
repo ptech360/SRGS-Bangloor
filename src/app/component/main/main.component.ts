@@ -14,6 +14,7 @@ import { AddEmployeeComponent } from '../addEmployee/addEmployee.component';
 import { AddStudentComponent } from '../addStudent/addStudent.component';
 
 import {EventComponent} from '../event/event.component';
+import { FoodmenuComponent } from '../foodmenu/foodmenu.component';
 import { SuggestionComponent } from '../suggestion/suggestion.component';
 
 import { AccountComponent } from '../account/account.component';
@@ -45,6 +46,7 @@ export class MainComponent implements OnInit, AfterViewInit {
     { title: 'Circular', component: CircularComponent, icon: 'icons/circular.png', url: '/circular' },
     { title: 'Homework', component: HomeworkComponent, icon: 'icons/homework.png', url: '/homework' },
     { title: 'Student Rating', component: StudentRatingComponent, icon: 'icons/rating.png', url: '/student-profile' },
+    { title: 'Food Menu', component: FoodmenuComponent, icon: 'icons/food.png', url: '/foodmenu' },    
 
     //  { title: 'Add Employee', component: AddEmployeeComponent, icon: '', url:'/add-employee'},
     //  {title: 'Add Student', component: AddStudentComponent, icon: '', url: '/add-student'},
