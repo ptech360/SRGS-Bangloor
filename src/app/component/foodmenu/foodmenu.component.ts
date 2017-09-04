@@ -26,7 +26,7 @@ export class FoodmenuComponent implements AfterViewInit{
     public loader:boolean=false;
     public itemLoader:boolean=false;
     public start:any;
-    public selectedMenu:any;
+    public selectedMenu:any={};
     // public submitProgress:any;
 
     constructor(
@@ -100,6 +100,7 @@ export class FoodmenuComponent implements AfterViewInit{
         }
         },
     eventClick:(event:any, jsEvent:any, view:any)=> {
+        console.log("eb")
           this.selectedMenu=event; 
           $('#clickModal').modal();
                 
